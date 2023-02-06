@@ -19,4 +19,7 @@ jobs:
       - store_artifacts:
           path: coverage
           destination: coverage
-
+workflows:
+  build_and_test:
+    jobs:
+      - build_and_test
