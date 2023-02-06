@@ -11,7 +11,6 @@ jobs:
           node-version: '18.14'
       - node/install-packages:
           pkg-manager: yarn
-      - run: cp .env.test .env
       - run: yarn prettier
       - run: yarn lint
       - run: yarn build
