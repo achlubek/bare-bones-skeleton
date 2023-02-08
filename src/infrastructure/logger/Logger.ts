@@ -1,5 +1,8 @@
-import { LogLevel, LoggerInterface } from "@app/logger/LoggerInterface";
-import { prettyPrint } from "@app/logger/prettyPrint";
+import {
+  LogLevel,
+  LoggerInterface,
+} from "@app/infrastructure/logger/LoggerInterface";
+import { prettyPrint } from "@app/infrastructure/logger/prettyPrint";
 
 export class Logger implements LoggerInterface {
   private effectiveLogLevels: string[];

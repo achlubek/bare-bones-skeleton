@@ -1,4 +1,4 @@
-import { LogLevel } from "@app/logger/LoggerInterface";
+import { LogLevel } from "@app/infrastructure/logger/LoggerInterface";
 
 export interface ConfigurationInterface {
   getLogLevel(): LogLevel;

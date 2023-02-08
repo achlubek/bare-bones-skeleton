@@ -10,7 +10,7 @@
   "isWorker": false,
   "recursive": true,
   "watch": false,
-  "require": ["ts-node/register", "src/util/ts-paths-register.ts"],
+  "require": ["ts-node/register", "tsconfig-paths/register"],
   "extension": ["ts", "js", "json"],
   "spec": ["{src,test}/**/*.spec.ts"],
   "package": "../package.json",

@@ -1,6 +1,9 @@
-import { ConfigurationInterface } from "@app/configuration/ConfigurationInterface";
-import { loadRequiredString } from "@app/configuration/envLoadingUtils";
-import { LogLevel, availableLogLevels } from "@app/logger/LoggerInterface";
+import { ConfigurationInterface } from "@app/infrastructure/configuration/ConfigurationInterface";
+import { loadRequiredString } from "@app/infrastructure/configuration/envLoadingUtils";
+import {
+  LogLevel,
+  availableLogLevels,
+} from "@app/infrastructure/logger/LoggerInterface";
 
 export class Configuration implements ConfigurationInterface {
   private readonly logLevel: LogLevel;

@@ -1,9 +1,6 @@
-// eslint-disable-next-line
-import "./util/ts-paths-register";
-
-import { Configuration } from "@app/configuration/Configuration";
-import { ConfigurationInterface } from "@app/configuration/ConfigurationInterface";
-import { Logger } from "@app/logger/Logger";
+import { Configuration } from "@app/infrastructure/configuration/Configuration";
+import { ConfigurationInterface } from "@app/infrastructure/configuration/ConfigurationInterface";
+import { Logger } from "@app/infrastructure/logger/Logger";
 
 const configuration: ConfigurationInterface = new Configuration();
 
