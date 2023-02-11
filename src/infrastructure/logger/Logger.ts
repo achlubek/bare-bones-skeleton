@@ -4,6 +4,8 @@ import {
 } from "@app/infrastructure/logger/LoggerInterface";
 import { prettyPrint } from "@app/infrastructure/logger/prettyPrint";
 
+class InvalidLogLevelException extends Error {}
+
 export class Logger implements LoggerInterface {
   private effectiveLogLevels: string[];
 
@@ -25,7 +27,7 @@ export class Logger implements LoggerInterface {
   }
 
   public info<T>(source: T, message: string): void {
-    if (this.effectiveLogLevels.includes("log")) {
+    if (this.effectiveLogLevels.includes("info")) {
       this.print(prettyPrint(source, message));
     }
   }
@@ -42,12 +44,18 @@ export class Logger implements LoggerInterface {
     }
   }
 
+  public log<T>(level: LogLevel, source: T, message: string): void {
+    if (this.effectiveLogLevels.includes(level)) {
+      this.print(prettyPrint(source, message));
+    }
+  }
+
   private print(line: string): void {
     // eslint-disable-next-line no-console
     console.log(line);
   }
 
-  private static getEffectiveLogLevels(logLevel: LogLevel): string[] {
+  public static getEffectiveLogLevels(logLevel: LogLevel): string[] {
     switch (logLevel) {
       case "none":
         return [];
@@ -56,12 +64,12 @@ export class Logger implements LoggerInterface {
       case "warn":
         return ["error", "warn"];
       case "info":
-        return ["error", "warn", "log"];
+        return ["error", "warn", "info"];
       case "debug":
-        return ["error", "warn", "log", "debug"];
+        return ["error", "warn", "info", "debug"];
       case "trace":
-        return ["error", "warn", "log", "debug", "trace"];
+        return ["error", "warn", "info", "debug", "trace"];
     }
-    return [];
+    throw new InvalidLogLevelException(`Invalid log level ${logLevel}`);
   }
 }

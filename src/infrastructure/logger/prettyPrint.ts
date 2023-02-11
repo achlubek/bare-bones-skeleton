@@ -21,7 +21,7 @@ export const prettyPrint = <T>(source: T, message: string): string => {
     name?: string;
     toString: () => string;
   };
-  let src: string = source ? casted.toString() : "";
+  let src: string = source ? casted.toString() : "undefined";
   if (typeof source !== "string") {
     let found = false;
     try {
@@ -36,6 +36,8 @@ export const prettyPrint = <T>(source: T, message: string): string => {
       if (!found && source && casted.constructor) {
         if (casted.constructor.name) {
           src = casted.constructor.name;
+        } else {
+          src = "object";
         }
       }
     } catch (e) {

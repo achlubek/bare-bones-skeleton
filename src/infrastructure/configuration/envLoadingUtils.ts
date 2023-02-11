@@ -1,12 +1,12 @@
-export function loadRequiredBool(envKeyName: string): boolean {
+export function loadRequiredBoolean(envKeyName: string): boolean {
   const data = process.env[envKeyName];
   if (!data) {
     throw new Error(`${envKeyName} env var is missing`);
   }
-  return data.trim() === "1";
+  return data.trim() === "true";
 }
 
-export function loadOptionalBool(
+export function loadOptionalBoolean(
   envKeyName: string,
   defaultValue: boolean
 ): boolean {
@@ -14,7 +14,7 @@ export function loadOptionalBool(
   if (!data) {
     return defaultValue;
   }
-  return data.trim() === "1";
+  return data.trim() === "true";
 }
 
 export function loadRequiredInt(envKeyName: string): number {
